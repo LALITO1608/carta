@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Ti ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: #ffdce6;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Corazones */
+.heart {
+  position: fixed;
+  top: -10px;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh);
+  }
+}
+
+.container {
+  width: 90%;
+  max-width: 360px;
+}
+
+/* SOBRE */
+.envelope {
+  position: relative;
+  background: white;
+  border-radius: 18px;
+  padding: 60px 20px 30px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.25);
+  text-align: center;
+}
+
+.flap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background: #f8a1c4;
+  clip-path: polygon(0 0, 50% 100%, 100% 0);
+  transform-origin: top;
+  transition: transform 0.8s ease;
+}
+
+h2 {
+  margin-top: 10px;
+  color: #d6336c;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-top: 15px;
+  text-align: center;
+  font-size: 16px;
+}
+
+button {
+  margin-top: 15px;
+  background: #f783ac;
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  border-radius: 22px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* CARTA */
+.letter {
+  display: none;
+  background: white;
+  border-radius: 18px;
+  padding: 40px 25px 30px;
+  margin-top: 40px;
+  box-shadow: 0 15px 35px rgba(0,0,0,.25);
+  animation: appear 1s ease;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.letter img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7d5c4bbd2e.mp3">
+</audio>
+
+<div class="container">
+
+  <!-- SOBRE -->
+  <div class="envelope" id="envelope">
+    <div class="flap" id="flap"></div>
+
+    <h2>💌 Tienes un nuevo mensaje</h2>
+    <p>Contraseña</p>
+
+    <input id="password" placeholder="Escribe aquí">
+    <button onclick="openEnvelope()">Abrir</button>
+  </div>
+
+  <!-- CARTA -->
+  <div class="letter" id="letter">
+
+    <!-- ✍️ AQUÍ ESCRIBES TU TEXTO -->
+    <!-- Puedes usar <p>, <br>, <strong>, etc -->
+Para ti hermosa 💗💗
+<img src="foto1.jpg">
+
+
+Hay una fecha muy importante para mi, una fecha donde todo empezo, una fecha que recuerdo y se me sale una sonrisa.
+16 de Agosto de 2025, fue el día que te vi por primera vez, tambien fue la vez que me enamore de ti, fue como un amor a primera vista, desde ese día te busque en instagram y siempre estaba pendiente a que subieras algo, cuando lo hacias, me quedaba minutos viendo tu historia haciendo que me enamorara cada vez más de tí, desde que llegaste a mi vida todo se siente diferente, se siente bonito, se siente real, todo el día pensando en ti, en cuando te vere, abrazarte mucho, besarte, verte a los ojos aunque me muera de nervios, decirte los mucho que te quiero, todo eso pasa por mi cabeza, haces que los momentos simples se sientas momentos especiales, tus abrazos son actos de paz, se siente como estar en casa, la luz que sale de tus ojos tan hermosos, tu voz que me relaja, tu cabello suave que huele rico. A veces me quedo pensando en las cosas que dices, o en cómo te ríes cuando te equivocas en los audios, y me doy cuenta de que esos son mis momentos favoritos del día. Es curioso, porque el mundo sigue girando igual de rápido para todos, pero cuando hablo contigo o cuando estamos cerca, siento que el reloj me da permiso de ir más despacio. No quiero sonar demasiado intenso, pero sí quería que supieras que me haces bien. Que me encanta descubrir cada detalle de ti, desde las cosas que te apasionan hasta las que te hacen enojar. Eres una persona increíble y, sinceramente, me siento muy afortunado de tenerte y de que seas tú quien causa este desorden tan bonito en mi vida.
+Siempre que veo algo lindo, ya sea un peluche, unas flores o cualquier cosa linda pienso en ti, no tienes idea de como que gustaria regalarte algo, pero como tu me djiste no se puede y no te gusta asi que toco sacar mis pocas habilidades de Programador para darte este detalle.
+Te escribo por que eres lo que pienso
+Te pienso por que eres lo que extraño
+Te extraño por que eres lo que amo.
+     Te quiero mucho hermosa.
+
+    <img src="foto2.jpg">
+
+  </div>
+
+</div>
+
+<script>
+const correctPassword = "16/08/2025";
+
+function openEnvelope() {
+  const input = document.getElementById("password").value.trim();
+
+  if (input === correctPassword) {
+    document.getElementById("flap").style.transform = "rotateX(180deg)";
+    document.getElementById("music").play();
+
+    setTimeout(() => {
+      document.getElementById("envelope").style.display = "none";
+      document.getElementById("letter").style.display = "block";
+    }, 700);
+  } else {
+    alert("Intenta de nuevo 💔");
+  }
+}
+
+/* Corazones */
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (14 + Math.random() * 20) + "px";
+  heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 8000);
+}, 350);
+</script>
+
+</body>
+</html>
